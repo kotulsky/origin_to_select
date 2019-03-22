@@ -48,7 +48,7 @@ class OriginToSelect(bpy.types.Operator):
     def execute(self, context):
         for area in bpy.context.screen.areas:
             if area.type == 'VIEW_3D':
-                cursor3d_location = bpy.context.scene.cursor_location.copy()
+                cursor3d_location = bpy.context.scene.cursor.location.copy()
                 
                 ctx = bpy.context.copy()
                 ctx['area'] = area
@@ -59,7 +59,7 @@ class OriginToSelect(bpy.types.Operator):
                 
                 bpy.ops.object.origin_set(type='ORIGIN_CURSOR')
                 
-                bpy.context.scene.cursor_location = cursor3d_location
+                bpy.context.scene.cursor.location = cursor3d_location
                 
                 bpy.ops.object.mode_set(mode='EDIT')
                 
